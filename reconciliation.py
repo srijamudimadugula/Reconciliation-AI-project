@@ -46,15 +46,21 @@ def reconcile(marico, customer):
     merged["qty_diff"] = merged["invoice_qty"] - merged["received_qty"]
 
     # Thresholds
-    merged["tolerance"] = merged["customer_clean"].map(THRESHOLDS).fillna(DEFAULT_THRESHOLD)
-
+    merged["tolerance"] = DEFAULT_THRESHOLD
+    for idx, row in merged.iterrows():
+        customer = row["customer_clean"]
+        if customer in THRESHOLDS:
+            merged.at[idx, "tolerance"] = THRESHOLDS[customer]
+    merged["tolerance_value"] = merged["invoice_amount"] * merged["tolerance"]
+   
     # Classification
     conditions = [
         merged["_merge"] == "left_only",
         merged["_merge"] == "right_only",
         (merged["amount_diff"] == 0) & (merged["qty_diff"] == 0),
+        
+        np.abs(merged["amount_diff"]) <= merged["tolerance_value"]
         merged["qty_diff"] != 0,
-        np.abs(merged["amount_diff"]) <= merged["tolerance"],
         merged["amount_diff"] > 0,
         merged["amount_diff"] < 0
     ]
