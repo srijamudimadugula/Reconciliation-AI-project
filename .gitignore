@@ -1,0 +1,15 @@
+# Environment and secrets
+.env
+
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter notebooks (optional, if you don’t want them in Git)
+notebooks/
+
+# Streamlit app (optional, if you don’t want to track it)
+streamlit_app.py
