@@ -1,6 +1,6 @@
 streamlit
 numpy
-openai
+groq
 python-dotenv
 pandas
 
