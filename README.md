@@ -18,7 +18,6 @@ This repository compares Marico invoice data against customer payment records, c
 ## Repository structure
 
 - `app.py` - Main Streamlit application for the reconciliation dashboard and AI assistant
-- `streamlit_app.py` - Legacy Streamlit dashboard script
 - `data_loader.py` - CSV loading, standardization, column normalization, and customer cleanup
 - `reconciliation.py` - Preprocessing and reconciliation logic with thresholds and action rules
 - `ai_module.py` - AI helpers for explanation, email drafting, and RAG-style question answering using Groq
@@ -56,10 +55,6 @@ If the key is missing or the `groq` package is not installed, the AI features wi
 
 4. Generate sample ledgers (optional)
 
-```powershell
-python generate_data.py
-```
-
 This creates or refreshes `marico_ledger.csv` and `customer_ledger.csv`.
 
 5. Run the dashboard
@@ -95,9 +90,4 @@ Customer names are normalized by lowercasing, trimming spaces, and removing hyph
 ## Notes
 
 - The main dashboard app uses `app.py`.
-- `streamlit_app.py` is an earlier version and can be used for comparison or legacy reference.
-- `test_pipeline.py` validates that the reconciliation output contains the expected schema.
 
-## License
-
-This repository has no license specified. Add a `LICENSE` file if you want to make it open source.
