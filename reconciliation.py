@@ -56,6 +56,7 @@ def reconcile(marico, customer):
         merged["amount_diff"] < 0,
     ]
 
+
     choices = [
         "MISSING_IN_CUSTOMER",
         "EXTRA_IN_CUSTOMER",
