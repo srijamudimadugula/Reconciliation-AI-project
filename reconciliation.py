@@ -59,7 +59,7 @@ def reconcile(marico, customer):
         merged["_merge"] == "right_only",
         (merged["amount_diff"] == 0) & (merged["qty_diff"] == 0),
         
-        np.abs(merged["amount_diff"]) <= merged["tolerance_value"]
+        np.abs(merged["amount_diff"]) <= merged["tolerance_value"],
         merged["qty_diff"] != 0,
         merged["amount_diff"] > 0,
         merged["amount_diff"] < 0
